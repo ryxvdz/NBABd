@@ -1,0 +1,8 @@
+
+.data-table tr {
+    border: 2px solid #000000;
+    padding: 3px;
+}
+.data-table td {
+    text-align: center;
+}
