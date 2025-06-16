@@ -5,7 +5,7 @@
             $host = "localhost";
             $user = "root";
             $passwd = "";
-            $db = "playoffsdb";
+            $db = "nba_estatisticas";
             try {
                 $this->conn = new PDO("mysql:host={$host};dbname={$db};charset=utf8", $user, $passwd);
                 $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

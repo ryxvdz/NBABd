@@ -1,8 +1,308 @@
-
-.data-table tr {
-    border: 2px solid #000000;
-    padding: 3px;
+/* General Body and Container Styles */
+body {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5; /* Light grey background */
+  color: #333;
+  line-height: 1.6;
 }
-.data-table td {
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Styles */
+.nba-header {
+  background-color: #000; /* Black for header */
+  color: #fff;
+  padding: 15px 0;
+  border-bottom: 5px solid #c9082a; /* NBA Red accent */
+}
+
+.nba-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-title {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.main-nav li {
+  margin-left: 25px;
+}
+
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  padding: 5px 0;
+  position: relative;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  background-color: #c9082a; /* NBA Red */
+  transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a:focus::after {
+  width: 100%;
+}
+
+.main-nav a:hover {
+  color: #c9082a; /* NBA Red on hover */
+}
+
+/* Main Content Styles */
+.nba-main-content {
+  padding: 40px 0;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #000; /* Black for headings */
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Select and Data Display */
+.select-wrapper {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.nba-select {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px 15px;
+  border: 2px solid #002868; /* NBA Blue */
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  font-size: 1em;
+  color: #333;
+  appearance: none; /* Remove default select arrow */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20fill%3D%22%23002868%22%20d%3D%22M5.5%208l4.5%204.5L14.5%208z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+}
+
+.nba-select:focus {
+  outline: none;
+  border-color: #c9082a; /* Red on focus */
+  box-shadow: 0 0 0 3px rgba(201, 8, 42, 0.2);
+}
+
+.data-results {
+  /* Basic styling for the area where PHP data will be displayed */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  min-height: 150px; /* Give it some minimum height */
+  overflow-x: auto; /* For potential tables */
+}
+
+/* Form Styles */
+.forms-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.form-wrapper h3 {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #002868; /* NBA Blue for form titles */
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.nba-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.nba-form input[type="text"],
+.nba-form input[type="number"],
+.nba-form select {
+  width: calc(100% - 24px); /* Account for padding */
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.nba-form input[type="text"]:focus,
+.nba-form input[type="number"]:focus,
+.nba-form select:focus {
+  outline: none;
+  border-color: #002868;
+  box-shadow: 0 0 0 3px rgba(0, 40, 104, 0.2);
+}
+
+.nba-button {
+  display: inline-block;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+.nba-button.primary {
+  background-color: #002868; /* NBA Blue */
+  color: #fff;
+}
+
+.nba-button.primary:hover {
+  background-color: #001f4e;
+  transform: translateY(-2px);
+}
+
+.nba-button.secondary {
+  background-color: #fdb927; /* Gold accent */
+  color: #000;
+}
+
+.nba-button.secondary:hover {
+  background-color: #e6a71e;
+  transform: translateY(-2px);
+}
+
+.nba-button.danger {
+  background-color: #c9082a; /* NBA Red */
+  color: #fff;
+}
+
+.nba-button.danger:hover {
+  background-color: #a30623;
+  transform: translateY(-2px);
+}
+
+/* Horizontal Rule for separation */
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 40px 0;
+}
+
+/* Footer Styles */
+.nba-footer {
+  background-color: #000;
+  color: #aaa;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.9em;
+  border-top: 3px solid #002868; /* NBA Blue accent */
+}
+
+.nba-footer p {
+  margin: 5px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nba-header .container {
+    flex-direction: column;
     text-align: center;
+  }
+
+  .site-title {
+    margin-bottom: 10px;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-nav li {
+    margin: 5px 0;
+  }
+
+  .forms-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Highlight para a linha da tabela */
+.highlighted-row {
+  background-color: #fdb927 !important; /* Cor dourada da NBA */
+  color: #000;
+  transition: background-color 0.2s ease;
+}
+
+/* Estilos opcionais para as tabelas dentro de .data-results */
+.data-results table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.data-results th,
+.data-results td {
+  border: 1px solid #eee;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.data-results th {
+  background-color: #002868; /* Azul escuro da NBA */
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.data-results tr:nth-child(even) {
+  background-color: #f5f5f5; /* Fundo mais claro para linhas pares */
+}
+
+.data-results tr:hover:not(.highlighted-row) {
+  background-color: #e0e0e0; /* Hover suave */
 }

@@ -25,8 +25,13 @@
                     echo '</tr>';
                     foreach ($result as $row) {
                         echo '<tr>';
-                        foreach($row as $value) {
-                            echo '<td>'.htmlspecialchars($value).'</td>';
+                        foreach($row as $field => $value) {
+                            if (strtolower($field) === 'salario' || strtolower($field) === 'salário') {
+                                // Formata como dólar americano
+                                echo '<td>$' . number_format($value, 2, '.', ',') . '</td>';
+                            } else {
+                                echo '<td>'.htmlspecialchars($value).'</td>';
+                            }
                         }
                         echo '</tr>';
                     }
